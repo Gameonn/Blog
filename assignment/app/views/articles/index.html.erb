@@ -1,0 +1,222 @@
+<style type="text/css">
+ 
+ body{
+  background-image:url("http://2.bp.blogspot.com/-Xmo26BMqg5Q/UihlqVwTwgI/AAAAAAAAAv0/V-Rrgm0V6oo/s1600/Top%2010%20best%20Simple%20Awesome%20Background%20Images%20for%20Your%20Website%20or%20Blog3.jpg");
+
+ } 
+
+.wrapper{
+  border-radius: 25px;
+  
+  
+  width: 100%;
+  
+
+}
+
+.wrapper1{
+  width: 65%;
+  text-align: center;
+  border-radius: 25px;
+  margin: 15px;
+  margin-left: auto;
+ margin-right: auto;
+  
+  background:url('http://screenspeaker.com/wp-content/uploads/2014/01/dark-iphone-wallpaperiphone-4-dark-background-11-daily-iphone-blog-rrtrbsca.jpg');
+}
+
+a{
+   border-radius: 5px;
+    font: bold 12px Arial;
+    text-decoration: none;
+    background-color: #C8C6F3;
+    color: #333333;
+    padding: 8px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+  
+}
+
+.content{
+  font-family: 'Open Sans', sans-serif;
+
+  margin-top: 50px;
+padding: 6px 0 0 6px;
+width: 630px;
+background: -webkit-radial-gradient(#C8C6F3, rgb(194, 182, 182), rgb(116, 116, 151));
+display:inline-block;
+}
+
+
+.right {
+
+margin-top: 50px;
+margin-left: 50px;
+padding-left: 50px;
+vertical-align: top;
+text-align: center;
+width: 300px;
+padding-top: 6px;
+display: inline-block;
+margin-right: 6px;
+background: rgba(255, 255, 255, 0.42);
+padding: 10px;
+}
+.aboutus{
+
+margin: 10px;
+padding: 20px;
+vertical-align: top;
+text-align: center;
+width: auto;
+padding-top: 6px;
+display: inline-block;
+margin-right: 6px;
+background: rgba(255, 255, 255, 0.42);
+padding: 10px;
+}
+
+ul
+{
+list-style-type:none;
+margin:0;
+padding:0;
+
+
+}
+li
+{
+display:inline;
+
+}
+h2{
+  padding: 24px 69px 36px 9px;
+  background-size: 100% 100%;
+  background: url("http://s2.wp.com/wp-content/themes/vip/si-nba2/images/ribbon-recut.png") no-repeat scroll 0 transparent;
+
+}
+h4{
+  color:white;
+}
+
+.tag{
+
+
+  background-color: rgb(139, 107, 85);
+  padding: 10px;
+  border-radius:10px;
+  margin:10px;
+  height:auto;
+}
+
+
+
+.connect{
+
+  margin: 10px;
+padding: 20px;
+vertical-align: top;
+text-align: center;
+width: auto;
+padding-top: 6px;
+display: inline-block;
+margin-right: 6px;
+background: rgba(255, 255, 255, 0.42);
+padding: 10px;
+ }
+ .nav{
+  text-align: center;
+
+  height:auto;
+  width:20%;
+background-color:rgba(49, 47, 47, 0.79);
+   display:inline-block;
+
+    padding-right: 21px;
+padding-bottom: 24px;
+padding-left: 10px;
+
+ }
+
+ img{
+  width:100px;
+  height:10   0px;  
+ }
+
+
+</style>
+
+<% if !user_signed_in? %>
+  <% @article.each do |a| %>
+
+<br>
+<br>
+<!-- 
+<div class="content"> 
+  <div class='tag'>
+        <h3> <%= a.title %></h3>  
+             <%= a.body %>
+             <p ><%#= link_to 'Comments:' ,article_path(a) %><%= a.comments.count %> </p>
+<br>
+
+             <%#= link_to "Show", article_path(a) %>
+  </div>
+</div> -->
+
+  <% end%>
+<% end %>
+     
+
+
+<div class="wrapper1">
+  <div class="content">    
+    <% @article.each do |a| %>
+  
+      <br>
+      <br>
+      <div class='tag'>
+        <h3> <%= a.title %></h3>  
+             <%= a.body %>
+        <% if user_signed_in? %>  
+        <p > <%= link_to 'Comments:' ,article_path(a) %><%= a.comments.count %> </p>
+        <p> <%= link_to "Show", article_path(a) %> 
+        <% if a.user == current_user %>
+        <%= link_to 'Edit Article' , edit_article_path(a) %>
+        <%= link_to 'Destroy', a, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+        <% end %>
+        </p>
+      </div> 
+      
+    <% end %> 
+    <br>
+    <%= will_paginate @article %>
+    <br>
+  </div>
+  <div class="right">
+    <div class="aboutus">
+      <h2> About Us </h2>
+      <p> Ben Golliver and Rob Mahoney bring you The Point Forward, SI.com's blog for all things NBA. Have a story idea or feedback? E-mail The Point Forward or contact Ben or Rob on Twitter.</p>
+    </div>
+      <div class="connect">
+        <h3> Connect</h3>
+        <%= link_to image_tag("http://patrickpowers.net/wp-content/uploads/2010/10/twitter_like_button.png", :alt => 'Twitter'),"http://twitter.com" %><br>
+        <%= link_to image_tag("http://cdn1.sbnation.com/entry_photo_images/9271877/new_facebook_like_640_large_verge_medium_landscape.png"), "http://facebook.com" %>
+        <br>    
+      </div>
+   </div> 
+</div>
+ 
+
+
+
+
+
+    
+
+   
+
+
+

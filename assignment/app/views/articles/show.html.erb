@@ -1,0 +1,87 @@
+<style type="text/css">
+ 
+ body{
+  background-image:url("http://2.bp.blogspot.com/-Xmo26BMqg5Q/UihlqVwTwgI/AAAAAAAAAv0/V-Rrgm0V6oo/s1600/Top%2010%20best%20Simple%20Awesome%20Background%20Images%20for%20Your%20Website%20or%20Blog3.jpg");
+
+ } 
+
+.show a{
+
+   border-radius: 5px;
+    font: bold 12px Arial;
+    text-decoration: none;
+    background-color: #C8C6F3;
+    color: #333333;
+    padding: 8px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+  
+
+}
+.nav{
+  font-family: 'Open Sans', sans-serif;
+
+  margin-top: 50px;
+padding: 6px 0 0 6px;
+width: 630px;
+background: -webkit-radial-gradient(#C8C6F3, rgb(194, 182, 182), rgb(116, 116, 151));
+display:inline-block;
+}
+
+.short{
+  background-color: rgb(139, 107, 85);
+  padding: 50px;
+  border-radius:10px;
+  margin:10px;
+  height:auto;
+}
+
+.nav1{
+
+margin-top: 50px;
+margin-left: 50px;
+padding-left: 50px;
+vertical-align: top;
+
+width: 400px;
+padding-top: 6px;
+display: inline-block;
+margin-right: 6px;
+background: rgba(255, 255, 255, 0.42);
+padding: 10px;
+}
+ </style>
+
+<div class="nav">
+<h3><%= @article.title %></h3>
+<%= @article.body %>
+
+</div>
+<div class='nav1'>
+<% @comment = Comment.new %>
+
+<%= render 'comment' %><br>
+
+<div class="show">
+<%= link_to 'Back', articles_path %>
+</div>
+<br>
+<% @article.comments.each do |d| %>
+
+<%= image_tag(d.user.photo.url(:small)) %>
+
+<%= d.note %><br>
+<div class="show">
+<p>
+     <% if d.user == current_user %>
+<%= link_to "Edit", edit_comment_path(d) %>
+<%= link_to 'Destroy', comment_path(d), method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+</p>
+</div>
+<%end%>
+<br>
+
+</div>

@@ -1,0 +1,67 @@
+<style type="text/css">
+ 
+ body{
+  background-image:url("http://2.bp.blogspot.com/-Xmo26BMqg5Q/UihlqVwTwgI/AAAAAAAAAv0/V-Rrgm0V6oo/s1600/Top%2010%20best%20Simple%20Awesome%20Background%20Images%20for%20Your%20Website%20or%20Blog3.jpg");
+
+ }
+
+ a{
+   border-radius: 5px;
+    font: bold 12px Arial;
+    text-decoration: none;
+    background-color: #C8C6F3;
+    color: #333333;
+    padding: 8px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+  
+} 
+
+
+.morph {
+  -webkit-transition: all 0.5s ease;
+     -moz-transition: all 0.5s ease;
+       -o-transition: all 0.5s ease;
+      -ms-transition: all 0.5s ease;
+          transition: all 0.5s ease;
+}
+ 
+.morph:hover img{
+  border-radius: 50%;
+width:120px;
+height:200px;
+  -webkit-transform: rotate(360deg);
+   
+}
+
+.nav1{
+
+margin-top: 50px;
+margin-left: 50px;
+padding-left: 50px;
+vertical-align: top;
+text-align: center;
+width: 300px;
+padding-top: 6px;
+display: inline-block;
+margin-right: 6px;
+background: rgba(255, 255, 255, 0.42);
+padding: 10px;
+}
+ </style>
+<div class="nav1">
+
+<div class="morph pic">
+<%= image_tag @profile.photo.url(:small) %><p>
+</div>
+
+<%= link_to "Edit Profile", edit_profile_path(:id) %>
+
+<h2><%= "Name:" %>	<%= @profile.name %><br>
+
+<%= "City:" %><%= @profile.City %></h2>
+
+<%= link_to 'Back', articles_path %>	
+</div>

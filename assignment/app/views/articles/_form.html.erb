@@ -1,0 +1,53 @@
+<style type="text/css">
+ 
+ body{
+  background-image:url("http://2.bp.blogspot.com/-Xmo26BMqg5Q/UihlqVwTwgI/AAAAAAAAAv0/V-Rrgm0V6oo/s1600/Top%2010%20best%20Simple%20Awesome%20Background%20Images%20for%20Your%20Website%20or%20Blog3.jpg");
+
+ }
+
+ a{
+   border-radius: 5px;
+    font: bold 12px Arial;
+    text-decoration: none;
+    background-color: #C8C6F3;
+    color: #333333;
+    padding: 8px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+  
+} 
+ </style>
+<%= form_for(@article) do |f| %>
+
+
+ <ul style="list-style-type:none"> <li>
+         
+        <%= f.label :title %>
+        <%= f.text_field :title %><p>
+        <%= f.label :body %>
+       <%= f.text_area :body, size: "30x30", placeholder: "Enter Article Here" %>
+
+
+
+        </li></ul>
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this myreview from being saved:</h2>
+
+      <ul>
+      <% @article.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+

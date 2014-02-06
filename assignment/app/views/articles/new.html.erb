@@ -1,0 +1,31 @@
+
+<style >
+
+.newcontainer{
+	text-align: center;
+}
+.new{
+text-align: center;
+margin-top: 50px;
+margin-left: 50px;
+padding-left: 50px;
+vertical-align: top;
+text-align: center;
+width: 300px;
+padding-top: 6px;
+display: inline-block;
+margin-right: 6px;
+background: rgba(255, 255, 255, 0.42);
+padding: 25px;
+padding-right: 70px;
+}
+</style>
+<div class="newcontainer">
+<div class='new'>
+<h1>New Blog</h1>
+
+<%= render 'form' %>
+
+<p><%= link_to 'Back', articles_path %></p>
+</div>
+</div>

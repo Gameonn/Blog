@@ -1,0 +1,114 @@
+
+<html>
+<head>
+  <title>Assignment</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+
+  <style type="text/css"> 
+h4{
+color: white;
+}
+.upper h4 a{
+  background-image: url("http://2.bp.blogspot.com/-Xmo26BMqg5Q/UihlqVwTwgI/AAAAAAAAAv0/V-Rrgm0V6oo/…e%20Awesome%20Background%20Images%20for%20Your%20Website%20or%20Blog3.jpg");
+color: white;
+}
+
+
+li
+{
+display:inline;
+
+}
+.upper{
+  float:right; 
+
+}
+
+.upper a{
+
+   border-radius: 5px;
+    font: bold 12px Arial;
+    text-decoration: none;
+    background-color: #C8C6F3;
+    color: #333333;
+    padding: 8px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+
+}
+
+
+/*Initialize*/
+ul#menu, ul#menu ul.sub-menu {
+    padding:0;
+    margin: 0;
+}
+ul#menu li, ul#menu ul.sub-menu li {
+    list-style-type: none;
+    display: inline-block;
+}
+/*Link Appearance*/
+ul#menu li a, ul#menu li ul.sub-menu li a {
+    text-decoration: none;
+    color: #fff;
+    background: #666;
+    padding: 5px;
+    display:inline-block;
+}
+/*Make the parent of sub-menu relative*/
+ul#menu li {
+    position: relative;
+}
+/*sub menu*/
+ul#menu li ul.sub-menu {
+    display:none;
+position: relative;
+    left: 0;
+    width: 100px;
+}
+ul#menu li:hover ul.sub-menu {
+    display:block;
+}
+  </style>
+
+</head>
+<body>
+
+
+<div id="user_nav">
+  <% if user_signed_in? %>
+    
+    <%#= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+  <% else %>
+    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+  <% end %>
+
+   <% if user_signed_in? %>
+    
+    <div class="upper">
+       <h4> <%= link_to current_user.email,articles_path %></h4>
+<ul id="menu">
+  <li>    <%= link_to image_tag(current_user.photo.url(:small)),profile_path(:id) %>  
+    <ul class="sub-menu"> 
+      <li><%= link_to "New Article" , new_article_path %></li>
+      <li><%= link_to "View Profile" , profile_path(:id) %></li>
+      <li > <%= link_to 'Sign Out',  destroy_user_session_path, method: :delete %></li>
+    </ul>
+  </li>
+</ul>
+</div>
+<% end %>
+
+
+
+</div>
+
+<%= yield %>
+
+</body>
+</html>
+

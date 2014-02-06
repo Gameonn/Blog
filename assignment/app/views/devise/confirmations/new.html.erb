@@ -1,0 +1,33 @@
+<style >
+
+.nav1{
+
+margin-top: 50px;
+margin-left: 50px;
+padding-left: 50px;
+vertical-align: top;
+text-align: center;
+width: 300px;
+padding-top: 6px;
+display: inline-block;
+margin-right: 6px;
+background: rgba(255, 255, 255, 0.42);
+padding: 25px;
+padding-right: 70px;
+}
+</style>
+<div class='nav1'>
+
+<h2>Resend confirmation instructions</h2>
+
+<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, :autofocus => true %></div>
+
+  <div><%= f.submit "Resend confirmation instructions" %></div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+</div>
