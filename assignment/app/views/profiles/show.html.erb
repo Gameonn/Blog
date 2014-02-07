@@ -26,15 +26,14 @@
        -o-transition: all 0.5s ease;
       -ms-transition: all 0.5s ease;
           transition: all 0.5s ease;
-}
- 
-.morph:hover img{
-  border-radius: 50%;
-width:120px;
-height:200px;
-  -webkit-transform: rotate(360deg);
-   
-}
+
+        }
+ .morph:hover img{
+border-radius: 50%;
+-webkit-transform: rotate(360deg);
+
+ }
+
 
 .nav1{
 
@@ -50,6 +49,7 @@ margin-right: 6px;
 background: rgba(255, 255, 255, 0.42);
 padding: 10px;
 }
+
  </style>
 <div class="nav1">
 
@@ -63,5 +63,7 @@ padding: 10px;
 
 <%= "City:" %><%= @profile.City %></h2>
 
+
 <%= link_to 'Back', articles_path %>	
+
 </div>

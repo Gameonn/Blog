@@ -30,12 +30,11 @@ def new
 
   def create
 
-    @article = Article.new()
+    @article = Article.new(article_params)
    # @articles.articles_id = current_user.id
 @article.title=params[:article][:title]
 @article.body=params[:article][:body]
-@m=User.find(current_user.id)
-@m.photo=params[:photo]
+    @article.user_id = current_user.id
 
     respond_to do |format|
       if @article.save

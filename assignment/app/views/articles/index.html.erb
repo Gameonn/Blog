@@ -15,12 +15,15 @@
 }
 
 .wrapper1{
-  width: 65%;
+  
   text-align: center;
   border-radius: 25px;
-  margin: 15px;
+  
   margin-left: auto;
  margin-right: auto;
+ box-sizing: border-box;
+padding: 2%;
+width: 100%;
   
   background:url('http://screenspeaker.com/wp-content/uploads/2014/01/dark-iphone-wallpaperiphone-4-dark-background-11-daily-iphone-blog-rrtrbsca.jpg');
 }
@@ -41,7 +44,9 @@ a{
 
 .content{
   font-family: 'Open Sans', sans-serif;
-
+width: 72%;
+float: left;
+margin-right: 2%;
   margin-top: 50px;
 padding: 6px 0 0 6px;
 width: 630px;
@@ -63,6 +68,8 @@ display: inline-block;
 margin-right: 6px;
 background: rgba(255, 255, 255, 0.42);
 padding: 10px;
+width: 20%;
+float: left;
 }
 .aboutus{
 
@@ -148,25 +155,7 @@ padding-left: 10px;
 
 </style>
 
-<% if !user_signed_in? %>
-  <% @article.each do |a| %>
 
-<br>
-<br>
-<!-- 
-<div class="content"> 
-  <div class='tag'>
-        <h3> <%= a.title %></h3>  
-             <%= a.body %>
-             <p ><%#= link_to 'Comments:' ,article_path(a) %><%= a.comments.count %> </p>
-<br>
-
-             <%#= link_to "Show", article_path(a) %>
-  </div>
-</div> -->
-
-  <% end%>
-<% end %>
      
 
 
@@ -182,8 +171,9 @@ padding-left: 10px;
         <% if user_signed_in? %>  
         <p > <%= link_to 'Comments:' ,article_path(a) %><%= a.comments.count %> </p>
         <p> <%= link_to "Show", article_path(a) %> 
+         
         <% if a.user == current_user %>
-        <%= link_to 'Edit Article' , edit_article_path(a) %>
+        <%= link_to 'Edit Article' , edit_article_path(:id => a.id) %>
         <%= link_to 'Destroy', a, method: :delete, data: { confirm: 'Are you sure?' } %>
         <% end %>
         <% end %>
@@ -212,11 +202,36 @@ padding-left: 10px;
 
 
 
+<script type='text/javascript'>
+$(document).ready(function()){
+    $(window(){
+        $('html').width($(window).width());
+      });
 
+        $(window).resize(function(){
+        $('.wrapper1').width($(window).width());
+        });
+        $(window(){
+        $('html').height($(window).height());
+      });
 
-    
+        $(window).resize(function(){
+        $('.wrapper1').height($(window).height());
+        });
+            $(window(){
+        $('right').width($(window).height());
+      });
 
+        $(window).resize(function(){
+        $('.right').width($(window).height());
+        });
+         $(window).resize(function(){
+        $('.content').width($(window).width());
+        });
+        $(window(){
+        $('.content').height($(window).height());
+      });
    
-
-
-
+    });
+}):
+</script>
