@@ -42,7 +42,14 @@ end
 def destroy
 	@comment=Comment.find(params[:id])
 	@comment.destroy
-	redirect_to article_path
+	respond_to do |format|
+      format.html { redirect_to articles_url }
+      format.json { head :no_content }
+    end
 end
 
+
+  def comment_params
+      params.require(:comment).permit(:comment, :user_id,:article_id)
+  end
 end

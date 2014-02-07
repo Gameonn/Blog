@@ -68,7 +68,10 @@ end
 def destroy
   @article=Article.find(params[:id])
     @article.destroy
-    redirect_to @article
+   respond_to do |format|
+      format.html { redirect_to articles_url }
+      format.json { head :no_content }
+    end
   end
 
 
