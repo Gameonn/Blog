@@ -6,9 +6,18 @@ class User < ActiveRecord::Base
 
 
 has_many :articles
+
+
 has_many :comments
 
-has_attached_file :photo, :styles => {:small => "120x150>"}
+has_attached_file :photo, :styles => {:small => "120x150>", :medium => "300x300>",:large =>   "400x400>"}
 
+def user_image(size)
+	if photo.present?
+		return photo.url(size)
+	else
+		return "/assets/3_#{size}.jpg"
+end
+end
 
 end

@@ -2,15 +2,17 @@ class ArticlesController < ApplicationController
 
 def index
 
-@article = Article.all.paginate(:page => params[:page], :per_page => 2)
-
+@article = Article.all.paginate(:page => params[:page], :per_page =>3 ).search(params[:search])
+@m = User.all
  @comment = Comment.all
-
- if params[:search]
-      @articles = Article.search(params[:search]).order("created_at DESC")
-    else
-      @articles = Article.order("created_at DESC")
-    end
+ # @user=User.find(params[:id])
+  
+   # @art = Article.search(params[:search])
+ # if params[:search]
+ #      @articles = Article.search(params[:search]).order("created_at DESC")
+ #    else
+ #      @articles = Article.order("created_at DESC")
+ #    end
 end
 
 def show
@@ -21,6 +23,13 @@ end
 
 def new
     @article = Article.new
+  end
+
+  def myart
+
+ @article = Article.where(:user_id => current_user.id).paginate(:page => params[:page], :per_page =>3 )
+
+
   end
 
   # GET /myreviews/1/edit
@@ -68,7 +77,7 @@ def destroy
   @article=Article.find(params[:id])
     @article.destroy
    respond_to do |format|
-      format.html { redirect_to articles_url }
+      format.html { redirect_to articles_url}
       format.json { head :no_content }
     end
   end
@@ -86,5 +95,6 @@ private
       params.require(:article).permit(:title, :string, :body, :text, :photo)
     end
 
+    
 
 end

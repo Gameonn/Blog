@@ -3,6 +3,8 @@ root 'articles#index'
 
   resources :articles
 
+
+get 'articles/:id/myart' => 'articles#myart', as: :art
   resources :comments
   resources :profiles
   devise_for :users

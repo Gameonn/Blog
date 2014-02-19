@@ -2,110 +2,130 @@
 <html>
 <head>
   <title>Assignment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.css" rel="stylesheet"/>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet"/>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <!--<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>-->
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/js/bootstrap.js" type="text/javascript"></script>
 
-  <style type="text/css"> 
-h4{
-color: white;
-}
-.upper h4 a{
-  background-image: url("http://2.bp.blogspot.com/-Xmo26BMqg5Q/UihlqVwTwgI/AAAAAAAAAv0/V-Rrgm0V6oo/…e%20Awesome%20Background%20Images%20for%20Your%20Website%20or%20Blog3.jpg");
-color: white;
-}
+  <style type="text/css">
+  body{
+  background-image:url("http://i.imgur.com/Lr08O.jpg");
 
+ } 
 
-li
-{
-display:inline;
-
-}
-.upper{
-  float:right; 
-
-}
-
-.upper a{
-
-   border-radius: 5px;
-    font: bold 12px Arial;
-    text-decoration: none;
-    background-color: #C8C6F3;
-    color: #333333;
-    padding: 8px;
-    border-top: 1px solid #CCCCCC;
-    border-right: 1px solid #333333;
-    border-bottom: 1px solid #333333;
-    border-left: 1px solid #CCCCCC;
-
-}
-
-
-/*Initialize*/
-ul#menu, ul#menu ul.sub-menu {
-    padding:0;
-    margin: 0;
-}
-ul#menu li, ul#menu ul.sub-menu li {
-    list-style-type: none;
-    display: inline-block;
-}
-/*Link Appearance*/
-ul#menu li a, ul#menu li ul.sub-menu li a {
-    text-decoration: none;
-    color: #fff;
-    background: #666;
-    padding: 5px;
-    display:inline-block;
-}
-/*Make the parent of sub-menu relative*/
-ul#menu li {
-    position: relative;
-}
-/*sub menu*/
-ul#menu li ul.sub-menu {
-    display:none;
-position: relative;
-    left: 0;
-    width: 100px;
-}
-ul#menu li:hover ul.sub-menu {
-    display:block;
-}
   </style>
+// <script type="text/javascript">
+  
+// $('#myTab a').click(function (e) {
+//   e.preventDefault();
+//   $(this).tab('show');
+// })
+// $('.nav').button()
+// </script>
+
 
 </head>
-<body>
+<body data-spy="scroll" data-target=".navbar">
 
-
-<div id="user_nav">
-  <% if user_signed_in? %>
+<div class="container">
+<div class="navbar navbar-inverse">
+  <div class="navbar-inner">
+  <div class="container">
     
-    <%#= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-  <% else %>
-    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
-  <% end %>
-
-   <% if user_signed_in? %>
-    
-    <div class="upper">
-       <h4> <%= link_to current_user.email,articles_path %></h4>
-<ul id="menu">
-  <li>    <%= link_to image_tag(current_user.photo.url(:small)),profile_path(:id) %>  
-    <ul class="sub-menu"> 
+ 
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+       <% if user_signed_in? %>
+     <!--  <a class="brand" href="#">SeththeBisckid</a> -->
+  <div class="nav-collapse collapse">
+      <!-- Be sure to leave the brand out there if you want it shown -->
+      
+ 
+      <!-- Everything you want hidden at 940px or less, place within here -->
+     
+        <ul class="nav">
+      <li class="active"> <%= link_to "Home" , articles_path %></li>
       <li><%= link_to "New Article" , new_article_path %></li>
-      <li><%= link_to "View Profile" , profile_path(:id) %></li>
-      <li > <%= link_to 'Sign Out',  destroy_user_session_path, method: :delete %></li>
+      <li><%= link_to "My Articles" , art_path(:id) %></li>
+     
+      <li><%= link_to "View Profile" , profile_path(:id => current_user.id) %></li>
+      <li>    <%= link_to 'Logout',  destroy_user_session_path, method: :delete %></li>
+<li>     <%= link_to current_user.email,profile_path(:id => current_user.id) %></li>
+<li><%= link_to image_tag(current_user.user_image(:small), :size =>"50x50"),profile_path(:id => current_user.id) %>  </li> 
+<!-- <li> <form class="navbar-search pull-left" onclick="self.search(  )">
+  <input type="text" class="search-query" placeholder="Search" >
+
+</form></li> -->
+
+<li> <%= form_tag articles_path, :method => 'get' do %>
+   <%= text_field_tag :search, params[:search]%>
+   <%= submit_tag "Search", :name => nil  %>
+ <% end %></li>
+
     </ul>
-  </li>
-</ul>
-</div>
+<% else %>
+   <ul class="nav">
+<li><p> <%= link_to "Sign up", new_user_registration_path %></p></li>
+  <li><p><%= link_to "sign in", new_user_session_path %></p></li>
+
 <% end %>
-
-
-
+        <!-- .nav, .navbar-search, .navbar-form, etc -->
+      </div>
+ 
+    </div>
+  </div>
 </div>
+ 
+
+
+
+  
+
+   <%#  if user_signed_in? %>
+
+ <!-- <div class="navbar navbar-inverse">
+  <div class="navbar-inner">
+    <a class="brand" href="#">SeththeBisckid</a>
+    <ul class="nav">
+      <li class="active"> <%#= link_to "Home" , articles_path %></li>
+      <li><%#= link_to "New Article" , new_article_path %></li>
+      <li><%#= link_to "My Articles" , art_path(:id) %></li>
+     
+      <li><%#= link_to "View Profile" , profile_path(:id=>current_user.id) %></li>
+      <li>    <%#= link_to 'Logout',  destroy_user_session_path, method: :delete %></li>
+<li>     <%#= link_to current_user.email,profile_path(:id=>current_user.id) %></li>
+<li><%#= link_to image_tag(current_user.user_image(:small), :size =>"50x50"),profile_path(:id=>current_user.id) %>  </li> 
+
+    </ul>
+  </div>
+  <ul class="nav nav-pills" style="float:right;">
+
+  <li class="active"> 
+     </ul> 
+</div>
+
+    <br>
+
+<%# else %>
+ <ul class="nav nav-pills">
+  <li class="active">
+    <%#= link_to "Sign up", new_user_registration_path %></li>
+    <li class="active"> <%#= link_to "sign in", new_user_session_path %></li>
+  <%# end %>
+
+
+
+
+
+</div> -->
 
 <%= yield %>
 

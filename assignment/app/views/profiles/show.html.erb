@@ -1,69 +1,100 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+
 <style type="text/css">
  
  body{
-  background-image:url("http://2.bp.blogspot.com/-Xmo26BMqg5Q/UihlqVwTwgI/AAAAAAAAAv0/V-Rrgm0V6oo/s1600/Top%2010%20best%20Simple%20Awesome%20Background%20Images%20for%20Your%20Website%20or%20Blog3.jpg");
 
+ background-image:url("http://i.imgur.com/Lr08O.jpg");
  }
 
- a{
-   border-radius: 5px;
-    font: bold 12px Arial;
-    text-decoration: none;
-    background-color: #C8C6F3;
-    color: #333333;
-    padding: 8px;
-    border-top: 1px solid #CCCCCC;
-    border-right: 1px solid #333333;
-    border-bottom: 1px solid #333333;
-    border-left: 1px solid #CCCCCC;
-  
-} 
+ p a{
 
+color: #fff;
+text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+background-color: #006dcc;
+background-image: -moz-linear-gradient(top,#08c,#04c);
+background-image: -webkit-gradient(linear,0 0,0 100%,from(#08c),to(#04c));
+background-image: -webkit-linear-gradient(top,#08c,#04c);
+background-image: -o-linear-gradient(top,#08c,#04c);
+background-image: linear-gradient(to bottom,#08c,#04c);
+background-repeat: repeat-x;
+border-color: #04c #04c #002a80;
+border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
 
-.morph {
-  -webkit-transition: all 0.5s ease;
-     -moz-transition: all 0.5s ease;
-       -o-transition: all 0.5s ease;
-      -ms-transition: all 0.5s ease;
-          transition: all 0.5s ease;
-
-        }
- .morph:hover img{
-border-radius: 50%;
--webkit-transform: rotate(360deg);
-
+padding: 5px;
+font-size: 17px;
+-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+border-radius: 6px;
  }
 
 
-.nav1{
+.hero-unit{
+ background-image: url('http://brandthunder.com/wp/wp-content/uploads/2011/11/Mac_Desktop_Background.jpg');
+  margin-top:5%;
+width:70%;
+  height:auto;
+  padding-top: 5px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.image{
+float: left;
+	margin-top: 3%;
+}
+.image p{
+	margin-top: 10px;
+}
+.profile{
+	
+	margin-left: 80px;
+margin-top: 15px;
 
-margin-top: 50px;
-margin-left: 50px;
-padding-left: 50px;
-vertical-align: top;
-text-align: center;
-width: 300px;
-padding-top: 6px;
 display: inline-block;
-margin-right: 6px;
-background: rgba(255, 255, 255, 0.42);
-padding: 10px;
 }
 
  </style>
-<div class="nav1">
+ </head>
+ <body>
+<div class="hero-unit">
 
-<div class="morph pic">
-<%= image_tag @profile.photo.url(:small) %><p>
+
+<div class="container-fluid">
+
+  
+<div class="row-fluid" >
+
+  <div class="image">
+  
+ <%= image_tag (@profile.photo) %>
+
+ <% if user_signed_in? %>
+<% if @profile.id ==current_user.id %>
+<p><%= link_to "Edit Profile", edit_profile_path(:id=> current_user.id) %></p>
+<% end %><% end %>
+
 </div>
+  <div class="profile">
 
-<%= link_to "Edit Profile", edit_profile_path(:id) %>
+<h2>	<%= @profile.name %><br>
 
-<h2><%= "Name:" %>	<%= @profile.name %><br>
+<%= @profile.City %><br>
+<%= @profile.dob %><br>
+ 
+</h2>
 
-<%= "City:" %><%= @profile.City %></h2>
 
-
-<%= link_to 'Back', articles_path %>	
-
+<p><%= link_to 'Back', articles_path %>	
+</p></div>
 </div>
+ 
+
+
+
+
+
+</body>
+</html>

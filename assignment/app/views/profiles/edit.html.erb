@@ -1,53 +1,58 @@
 <style type="text/css">
- 
+
  body{
-  background-image:url("http://2.bp.blogspot.com/-Xmo26BMqg5Q/UihlqVwTwgI/AAAAAAAAAv0/V-Rrgm0V6oo/s1600/Top%2010%20best%20Simple%20Awesome%20Background%20Images%20for%20Your%20Website%20or%20Blog3.jpg");
-
- }
-
- a{
-   border-radius: 5px;
-    font: bold 12px Arial;
-    text-decoration: none;
-    background-color: #C8C6F3;
-    color: #333333;
-    padding: 8px;
-    border-top: 1px solid #CCCCCC;
-    border-right: 1px solid #333333;
-    border-bottom: 1px solid #333333;
-    border-left: 1px solid #CCCCCC;
-  
-} 
-
-.nav1{
-
-margin-top: 50px;
-margin-left: 50px;
-padding-left: 50px;
-vertical-align: top;
-text-align: center;
-width: 300px;
-padding-top: 6px;
-display: inline-block;
-margin-right: 6px;
-background: rgba(255, 255, 255, 0.42);
-padding: 10px;
+   
+  background-image:url("http://i.imgur.com/Lr08O.jpg");
+  }  
+.hero-unit{
+   background-image: url('http://brandthunder.com/wp/wp-content/uploads/2011/11/Mac_Desktop_Background.jpg');
+  margin-top:6%;
+  width: 30%;
+  height:auto;
+  padding-top: 5px;
+  margin-left: auto;
+  margin-right: auto;
 }
- </style>
-<%= form_tag profile_path , :multipart => true  ,method: :patch %>
-<div class="nav1">
-<h1> Update</h1>
- <ul style="list-style-type:none"> <li>
-          
- 
-<%= label_tag(:name) %>
-<%= text_field_tag(:name) %><br>
-<%= label_tag(:city) %>
-       <%= text_field_tag(:city) %><br>
-       <%= file_field_tag(:photo) %><br>
-<%#= image_tag(current_user.photo.url(:small)) %>
-<%= submit_tag "Save" %>
 
+</style>
+<div class="hero-unit">
+<div class="container-fluid">     
+   <div class="row-fluid">
+   
 
-        </li></ul>
+          <div class="span4">
+          <%= form_tag profile_path ,  :multipart => true  ,method: :patch %>
+                           
+                                   
+                  
+      
+                          
+                                 <%= label_tag :Name %>
+                                  <%= text_field_tag :name,@m.name %>
+                          
+                           <%= label_tag :City %>
+                                  <%= text_field_tag :City,@m.City %>
+                           
+                            <%= label_tag :DOB %>
+
+                            <%= text_field_tag :dob,@m.dob %>
+                            
+                       
+                            <%= label_tag :Email %>
+                            <span class="input uneditable-input"><%= @m.email %>
+                         </span>
+                       
+                        
+                           <%= file_field_tag :photo %>
+                
+   
+<%= submit_tag "Save"%>
 </div>
+         
+
+<script>
+$(document).ready(function(){
+  $('#dob').datepicker();
+})
+$('.typeahead').typeahead()
+  </script>

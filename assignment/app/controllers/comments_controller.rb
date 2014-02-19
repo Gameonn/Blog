@@ -41,9 +41,10 @@ end
 
 def destroy
 	@comment=Comment.find(params[:id])
+  @article = @comment.article
 	@comment.destroy
 	respond_to do |format|
-      format.html { redirect_to articles_url }
+      format.html { redirect_to @article }
       format.json { head :no_content }
     end
 end

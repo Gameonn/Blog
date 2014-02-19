@@ -1,0 +1,58 @@
+<style type="text/css">
+ 
+ body{
+  background-image:url("http://i.imgur.com/Lr08O.jpg");
+
+ } 
+.pagination{
+  text-align: right;
+ margin: 0px;
+background-color: white;
+
+
+ }
+ .hero-unit{
+ background-image: url('http://brandthunder.com/wp/wp-content/uploads/2011/11/Mac_Desktop_Background.jpg');
+  margin-top:3%;
+  width: 50%;
+  height:600px;
+  overflow-y:scroll;
+color:white;
+  padding-top: 5px;
+  margin-left: 100px;
+
+}
+.page{
+
+  display: inline-block;
+ margin-left: 100px;
+
+background-color: white;
+}
+ .pagination a{
+
+  padding: 4px 12px;
+  line-height: 20px;
+  text-decoration: none;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-left-width: 0;
+
+ }
+ </style>
+
+<div class="hero-unit">
+
+        <% @article.each do |a| %>
+<h3><%= a.title %></h3>
+<%= a.body %>
+<%end%>
+</div>
+<div class="page">
+<p>
+  <%= will_paginate @article %>
+
+</p>
+</div>
+
+

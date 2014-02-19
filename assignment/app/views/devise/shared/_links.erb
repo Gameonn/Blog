@@ -1,3 +1,26 @@
+ <style type="text/css">
+ p a{
+
+color: #fff;
+text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+background-color: #006dcc;
+background-image: -moz-linear-gradient(top,#08c,#04c);
+background-image: -webkit-gradient(linear,0 0,0 100%,from(#08c),to(#04c));
+background-image: -webkit-linear-gradient(top,#08c,#04c);
+background-image: -o-linear-gradient(top,#08c,#04c);
+background-image: linear-gradient(to bottom,#08c,#04c);
+background-repeat: repeat-x;
+border-color: #04c #04c #002a80;
+border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+
+padding: 5px;
+font-size: 17px;
+-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+border-radius: 6px;
+ }
+</style>
+<p>
 <%- if controller_name != 'sessions' %>
   <%= link_to "Sign in", new_session_path(resource_name) %><br />
 <% end -%>
@@ -23,3 +46,4 @@
     <%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) %><br />
   <% end -%>
 <% end -%>
+</p>
