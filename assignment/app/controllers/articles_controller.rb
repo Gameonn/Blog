@@ -6,7 +6,7 @@ def index
 @m = User.all
  @comment = Comment.all
  # @user=User.find(params[:id])
-  
+  #check
    # @art = Article.search(params[:search])
  # if params[:search]
  #      @articles = Article.search(params[:search]).order("created_at DESC")
