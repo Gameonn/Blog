@@ -13,6 +13,8 @@ def create
    @comment.user_id= params[:comment][:user_id]
 @comment.save
 redirect_to article_path(@comment.article_id)
+
+#chefkgkenerklg
     
 
   end
